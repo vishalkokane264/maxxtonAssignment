@@ -1,0 +1,69 @@
+<div fxLayout="column">
+  <div fxLayout="row">
+    <div fxLayout="column" fxFlex="50">
+      <p>Choose Option</p>
+
+      <div>
+        <input
+          type="radio"
+          id="sortbyNameJoiningDate"
+          [checked]="opt === 0"
+          (change)="sortbyNameAndJoiningDateFunc()"
+        />Sort By name And joining date
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="searchByName"
+          [checked]="opt === 1"
+          (change)="searchByNameFunc()"
+        />
+        Search by name
+        <input type="text" id="searchName" [(ngModel)]="searchName" />
+        <button (click)="searchByNameFunc()">Search</button>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="sortbyNameJoiningDate"
+          [checked]="opt === 2"
+          (change)="expMoreThan2YrFunc()"
+        />Experience more than 2 yr
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="distinctCOunt"
+          [checked]="opt === 3"
+          (click)="distictDeptAndCountFunc()"
+        />Distinct department and count of candidate in each
+      </div>
+      <div>
+        <input
+          type="radio"
+          [checked]="opt === 4"
+          id="removedept"
+          (change)="removeDeptFunc()"
+        />Remove candidate from department
+        <input type="text" id="removeDept" [(ngModel)]="removeDepartment" />
+        <button (click)="removeDeptFunc()">Remove</button>
+      </div>
+    </div>
+    <div fxLayout="column" fxFlex="50">
+      <div fxLayout="row" fxLayoutGap="200px">
+        <p>id</p>
+        <p>Name</p>
+        <p>department</p>
+        <p>Joining date</p>
+      </div>
+      <div *ngFor="let data of new_candidate">
+        <div fxLayout="row" fxLayoutGap="200px" fxLayoutAlign="start center">
+          <p>{{ data.id }}</p>
+          <p>{{ data.name }}</p>
+          <p>{{ data.department }}</p>
+          <p>{{ data.joining_date }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
